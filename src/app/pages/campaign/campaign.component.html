@@ -1,0 +1,36 @@
+<div class="campaign-tabs">
+  <span [class.active]="step === 1">Campaign Details</span>
+  <span [class.active]="step === 2">Select Theme</span>
+</div>
+
+<!-- Step 1: Campaign Details -->
+<div *ngIf="step === 1" class="campaign-content">
+<form #f="ngForm">
+  <textarea [(ngModel)]="description" name="description" placeholder="Campaign description"></textarea>
+<textarea [(ngModel)]="offer" name="offer" placeholder="Offer details"></textarea>
+<textarea [(ngModel)]="visual" name="visual" placeholder="Visual imagery style description"></textarea>
+
+</form>
+
+  <div class="reference">
+    <mat-icon color="accent">image</mat-icon>
+    <span>Reference</span>
+    <input type="file" (change)="onImage($event)" />
+  </div>
+
+ 
+</div>
+
+<!-- Step 2: Select Theme -->
+<app-select-theme
+  *ngIf="step === 2"
+  (selectedChange)="themeSelected($event)">
+</app-select-theme>
+
+<app-main-cta
+  [step]="step"
+  [canProceed]="canProceed()"
+  (nextClicked)="goNext()"
+  (backClicked)="goBack()"
+></app-main-cta>
+

@@ -1,0 +1,65 @@
+.left-nav-bar {
+  background: #edeceb;
+  width: 66px;
+  min-width: 66px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 16px;
+  box-shadow: 1px 0 0 #dfdbd7;
+}
+
+.nav-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 38px;
+}
+
+.campaign-btn {
+  background: #d76e3a;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 2px;
+}
+
+.plus-icon mat-icon {
+  color: #fff;
+  font-size: 26px;
+}
+
+.campaign-label {
+  color: #393030;
+  font-size: 13px;
+  text-align: center;
+  line-height: 1.1;
+  font-weight: 600;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.dash-btn {
+  background: transparent;
+  border-radius: 10px;
+  width: 32px;
+  height: 32px;
+}
+
+.dash-btn mat-icon {
+  color: #392f2d;
+  font-size: 22px;
+}
+
+.dash-label {
+  color: #392f2d;
+  font-size: 13px;
+  margin-top: 3px;
+  text-align: center;
+}

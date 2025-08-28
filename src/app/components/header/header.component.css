@@ -1,0 +1,88 @@
+.header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #d76e3a; /* Step progress bar background */
+  height: 45px;
+  width: 100%; /* fix overflow */
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.menu-area {
+  background: #d76e3a;   /* Now matches step progress bar */
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  padding: 0 16px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  min-width: 68px;
+  /* Remove box-shadow if present */
+}
+
+
+/* keep other styles unchanged */
+
+
+
+.stepper-track {
+  display: flex;
+  align-items: center;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.step-item {
+  display: flex;
+  align-items: center;
+}
+
+.circle {
+  display: flex;
+  width: 30px;
+  height: 30px;
+  background: #fff;
+  color: #d76e3a;
+  font-weight: bold;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  border: 2px solid #d76e3a;
+}
+
+.line {
+  width: 90px;
+  height: 2px;
+  background: #fff;
+  display: inline-block;
+  margin: 0 4px;
+}
+
+.tick mat-icon {
+  color: #fff;
+  font-size: 30px;
+  margin-left: 12px;
+}
+
+.profile-area {
+  background: #fb9c58;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  padding: 0 16px;
+  min-width: 68px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.icon-btn mat-icon {
+  color: #fff;
+  font-size: 26px;
+}
+
+.icon-btn {
+  margin-left: 8px;
+}
