@@ -1,12 +1,10 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
+import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.html',
-  styleUrl: './app.css'
+  template: `<app-main-layout></app-main-layout>`,
+  standalone: true,
+  imports: [MainLayoutComponent],
 })
-export class App {
-  protected readonly title = signal('desire-ai-dashboard');
-}
+export class AppComponent {}
