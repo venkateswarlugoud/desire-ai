@@ -1,0 +1,39 @@
+<div class="asset-selection-container">
+  <div class="page-header">
+    <h2>Select Assets</h2>
+    <p class="page-subtitle">Choose assets from the selected template</p>
+  </div>
+
+  <div class="content-area">
+    <div class="main-content">
+      <app-asset-list
+        [assets]="assets"
+        [selectedAssets]="selectedAssets"
+        (assetSelect)="onAssetSelect($event)"
+        (automationToggle)="onAutomationToggle($event)"
+        (selectAll)="onSelectAll($event)">
+      </app-asset-list>
+      
+      <div class="action-buttons">
+        <button class="btn btn-primary" (click)="updateAssets()">
+          Update
+        </button>
+      </div>
+    </div>
+    
+    <div class="sidebar">
+      <div class="sidebar-content">
+        <h3>Asset Details</h3>
+        <div class="placeholder-content">
+          <div class="placeholder-icon">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" stroke="#666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <p class="placeholder-text">Nothing to Show...</p>
+          <p class="placeholder-subtext">Select an Asset on the left panel</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<div class="vertical-selector-container">
+  <mat-form-field appearance="outline" class="vertical-dropdown">
+    <mat-label>Select vertical</mat-label>
+    <mat-select [(ngModel)]="selectedVertical" (selectionChange)="onVerticalChange()">
+      <mat-option *ngFor="let vertical of verticals" [value]="vertical">
+        {{ vertical }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  
+  <button 
+    mat-icon-button 
+    class="vertical-manager-btn" 
+    (click)="openVerticalManager()"
+    matTooltip="Manage verticals">
+    <mat-icon>list</mat-icon>
+  </button>
+</div>

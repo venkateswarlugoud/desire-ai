@@ -1,0 +1,35 @@
+<div class="asset-card">
+  <div class="asset-checkbox">
+    <mat-checkbox 
+      [checked]="isSelected"
+      (change)="onAssetSelect($event.checked)">
+    </mat-checkbox>
+  </div>
+  
+  <div class="asset-content">
+    <div class="asset-info">
+      <h4 class="asset-name">{{ asset.name }}</h4>
+      <p class="asset-dimensions">{{ asset.dimensions }}</p>
+    </div>
+    
+    <div class="asset-thumbnail">
+      <img [src]="asset.thumbnailUrl" [alt]="asset.name" class="thumbnail-image">
+    </div>
+    
+    <div class="asset-controls">
+      <div class="automation-toggle">
+        <span class="toggle-label">Automate</span>
+        <mat-slide-toggle 
+          [checked]="asset.automate"
+          (change)="onAutomationToggle($event.checked)">
+        </mat-slide-toggle>
+      </div>
+      
+      <div *ngIf="asset.isParent" class="asset-counter">
+        <button class="counter-btn">-</button>
+        <span class="counter-value">5</span>
+        <button class="counter-btn">+</button>
+      </div>
+    </div>
+  </div>
+</div>

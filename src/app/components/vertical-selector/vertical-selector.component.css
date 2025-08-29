@@ -1,0 +1,21 @@
+.vertical-selector-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.vertical-dropdown {
+  min-width: 200px;
+}
+
+.vertical-manager-btn {
+  color: #666;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.vertical-manager-btn:hover {
+  background-color: #f5f5f5;
+  color: #333;
+}

@@ -1,0 +1,38 @@
+.template-list-container {
+  padding: 20px;
+}
+
+.template-list-title {
+  margin: 0 0 20px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+}
+
+.template-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: #666;
+}
+
+.empty-state-icon {
+  margin-bottom: 16px;
+}
+
+.empty-state-text {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.empty-state-subtext {
+  margin: 0;
+  font-size: 14px;
+  color: #ff6b35;
+}

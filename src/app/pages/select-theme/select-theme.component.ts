@@ -1,9 +1,8 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatSelectModule } from '@angular/material/select';
-import { MatOptionModule } from '@angular/material/core';
+import { VerticalSelectorComponent } from '../../components/vertical-selector/vertical-selector.component';
+import { TemplateListComponent } from '../../components/template-list/template-list.component';
+import { CampaignService, Template } from '../../services/campaign.service';
 
 @Component({
   selector: 'app-select-theme',
@@ -12,41 +11,36 @@ import { MatOptionModule } from '@angular/material/core';
   standalone: true,
   imports: [
     CommonModule,
-    FormsModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatOptionModule,
+    VerticalSelectorComponent,
+    TemplateListComponent
   ]
 })
-export class SelectThemeComponent {
+export class SelectThemeComponent implements OnInit {
   @Output() selectedChange = new EventEmitter<boolean>();
+  
+  templates: Template[] = [];
+  selectedTemplate: Template | null = null;
 
-  verticals = ['Dineout', 'Restaurant', 'E-commerce', 'Fashion'];
-  themes: { [key: string]: string[] } = {
-    Dineout: [
-      "Valentine Special Blue",
-      "Valentine Special Red",
-      "Valentine Special Gold",
-      "Valentine Special Pink",
-      "Valentine Special Brown"
-    ],
-    Restaurant: ["Fine Dining", "Family Feast"],
-    "E-commerce": ["Flash Sale", "Summer Vibes"],
-    Fashion: ["Spring Look", "Winter Collection"]
-  };
+  constructor(private campaignService: CampaignService) {}
 
-  selectedVertical: string = '';
-  filteredThemes: string[] = [];
-  selectedTheme: string | null = null;
+  ngOnInit(): void {
+    this.campaignService.currentCampaign$.subscribe(campaign => {
+      if (campaign?.selectedTemplate) {
+        this.selectedTemplate = campaign.selectedTemplate;
+        this.selectedChange.emit(true);
+      }
+    });
+  }
 
-  onVerticalChange() {
-    this.filteredThemes = this.themes[this.selectedVertical] || [];
-    this.selectedTheme = null;
+  onVerticalChange(vertical: string): void {
+    this.templates = this.campaignService.getTemplatesByVertical(vertical);
+    this.selectedTemplate = null;
     this.selectedChange.emit(false);
   }
 
-  selectTheme(theme: string) {
-    this.selectedTheme = theme;
+  onTemplateSelect(template: Template): void {
+    this.campaignService.selectTemplate(template);
+    this.selectedTemplate = template;
     this.selectedChange.emit(true);
   }
 }

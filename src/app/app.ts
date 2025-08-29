@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
+import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  template: `<app-main-layout></app-main-layout>`,
+  templateUrl: './app.html',
+  styleUrls: ['./app.css'],
   standalone: true,
-  imports: [MainLayoutComponent],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive],
 })
 export class AppComponent {}

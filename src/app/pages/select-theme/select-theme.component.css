@@ -1,25 +1,5 @@
-.theme-select-field {
-  width: 100%;
-  margin-bottom: 24px;
-}
-.theme-list {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-.theme-card {
-  background: #fff;
-  border-radius: 8px;
-  border: 1.5px solid #e3e3e3;
-  padding: 18px 18px;
-  font-size: 15px;
-  cursor: pointer;
-  user-select: none;
-  transition: background-color 0.18s, border-color 0.18s, color 0.18s;
-}
-.theme-card.selected {
-  background-color: #ffe4d1;
-  border-color: #ffa41b;
-  color: #d76e3a;
-  font-weight: 600;
+.select-theme-container {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
 }

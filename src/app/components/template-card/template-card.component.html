@@ -1,0 +1,31 @@
+<div 
+  class="template-card" 
+  [class.selected]="isSelected"
+  (click)="onTemplateSelect()">
+  
+  <div class="template-content">
+    <div class="template-text">
+      <p class="template-description">{{ template.description }}</p>
+      <h3 class="template-headline">{{ template.name }}</h3>
+      <button class="template-cta">Shop now</button>
+    </div>
+    
+    <div class="template-image">
+      <img [src]="template.imageUrl" [alt]="template.name" class="template-thumbnail">
+      <div class="color-swatches">
+        <div 
+          *ngFor="let color of template.colors" 
+          class="color-swatch"
+          [style.background-color]="color">
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="template-selection">
+    <mat-radio-button 
+      [checked]="isSelected"
+      (click)="onTemplateSelect()">
+    </mat-radio-button>
+  </div>
+</div>

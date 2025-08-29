@@ -1,0 +1,85 @@
+<div class="asset-list-container">
+  <div class="asset-list-header">
+    <div class="selection-info">
+      <span class="selection-text">Asset selection {{ selectedAssets.length }}/{{ assets.length }}</span>
+      <mat-checkbox 
+        [checked]="selectedAssets.length === assets.length && assets.length > 0"
+        [indeterminate]="selectedAssets.length > 0 && selectedAssets.length < assets.length"
+        (change)="onSelectAll($event.checked)">
+        Select all
+      </mat-checkbox>
+    </div>
+    
+    <div class="search-filter-controls">
+      <mat-form-field appearance="outline" class="search-field">
+        <mat-label>Search</mat-label>
+        <input 
+          matInput 
+          [(ngModel)]="searchTerm" 
+          (input)="onSearch()"
+          placeholder="Search assets...">
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+      
+      <button mat-icon-button class="filter-btn" matTooltip="Filter assets">
+        <mat-icon>filter_list</mat-icon>
+      </button>
+      
+      <div class="view-toggle">
+        <button 
+          mat-icon-button 
+          [class.active]="viewMode === 'list'"
+          (click)="viewMode = 'list'"
+          matTooltip="List view">
+          <mat-icon>view_list</mat-icon>
+        </button>
+        <button 
+          mat-icon-button 
+          [class.active]="viewMode === 'grid'"
+          (click)="viewMode = 'grid'"
+          matTooltip="Grid view">
+          <mat-icon>grid_view</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="asset-sections">
+    <!-- Parent Assets Section -->
+    <div class="asset-section" *ngIf="getParentAssets().length > 0">
+      <h4 class="section-title">Parent assets ({{ getParentAssets().length }})</h4>
+      <div class="asset-grid" [class.list-view]="viewMode === 'list'">
+        <app-asset-card
+          *ngFor="let asset of getParentAssets()"
+          [asset]="asset"
+          [isSelected]="isAssetSelected(asset)"
+          (assetSelect)="onAssetSelect($event)"
+          (automationToggle)="onAutomationToggle($event)">
+        </app-asset-card>
+      </div>
+    </div>
+
+    <!-- Child Assets Section -->
+    <div class="asset-section" *ngIf="getChildAssets().length > 0">
+      <h4 class="section-title">Child assets ({{ getChildAssets().length }})</h4>
+      <div class="asset-grid" [class.list-view]="viewMode === 'list'">
+        <app-asset-card
+          *ngFor="let asset of getChildAssets()"
+          [asset]="asset"
+          [isSelected]="isAssetSelected(asset)"
+          (assetSelect)="onAssetSelect($event)"
+          (automationToggle)="onAutomationToggle($event)">
+        </app-asset-card>
+      </div>
+    </div>
+
+    <!-- Empty State -->
+    <div *ngIf="filteredAssets.length === 0" class="empty-state">
+      <div class="empty-state-icon">
+        <mat-icon>search_off</mat-icon>
+      </div>
+      <p class="empty-state-text">No assets found</p>
+      <p class="empty-state-subtext">Try adjusting your search criteria</p>
+    </div>
+  </div>
+</div>
